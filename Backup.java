@@ -67,7 +67,8 @@ public class Backup {
             escreverRecuperacao("livros_isbn.hash_d.db", path.toString()+ "/",  "dados/");
         System.out.println("\n \n \nBackup do arquivo feito com sucesso!");
             return true;
-        } catch (Exception e) {
+        }
+         catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
 
