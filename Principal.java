@@ -25,6 +25,8 @@ public class Principal {
         System.out.println("\n1) Categorias");
         System.out.println("2) Autores");
         System.out.println("3) Livros");
+        System.out.println("4) Fazer um Backup");
+        System.out.println("5) Recuperar um Backup");
         System.out.println("\n9) Reiniciar BD");
         System.out.println("\n0) Sair");
 
@@ -55,6 +57,7 @@ public class Principal {
             Backup.listarBackups();
             break;
           case 0:
+            Backup.criarBackup();
             break;
           default:
             System.out.println("Opção inválida");
