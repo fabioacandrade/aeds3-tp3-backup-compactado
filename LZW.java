@@ -28,9 +28,9 @@ public class LZW {
             byte[] msgBytes = msg.getBytes();
             byte[] msgCodificada = codifica(msgBytes);
 
-            System.out.println(msg);
-            System.out.println("mensagem original tem " + msgBytes.length + " bytes");
-            System.out.println("codificado em " + msgCodificada.length + " bytes");
+//            System.out.println(msg);
+ //           System.out.println("mensagem original tem " + msgBytes.length + " bytes");
+  //          System.out.println("codificado em " + msgCodificada.length + " bytes");
 
             byte[] msgDecodificada = decodifica(msgCodificada);
             System.out.println(new String(msgDecodificada));
@@ -85,9 +85,9 @@ public class LZW {
 
         }
 
-        System.out.println("Indices");
-        System.out.println(saida);
-        System.out.println("Dicionário tem " + dicionario.size() + " elementos");
+    //    System.out.println("Indices");
+     //   System.out.println(saida);
+     //   System.out.println("Dicionário tem " + dicionario.size() + " elementos");
 
         BitSequence bs = new BitSequence(BITS_POR_INDICE);
         for (i = 0; i < saida.size(); i++) {

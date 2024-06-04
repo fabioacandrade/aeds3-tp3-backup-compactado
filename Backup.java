@@ -16,9 +16,9 @@ public class Backup {
         pasta = new File("backups/backup_" + data);
         boolean resp = pasta.mkdir();
         if (resp == true) {
-            System.out.println("Criou");
+      //      System.out.println("Criou");
         } else {
-            System.out.println("Nao criou");
+      //      System.out.println("Nao criou");
         }
 
     }
@@ -35,7 +35,6 @@ public class Backup {
             for (i = 0; i < arquivos.length; i++) {
                 System.out.println(i + 1 + ") " + arquivos[i].getName());
             }
-            System.out.println("\n0) Sair");
             escolha = Integer.valueOf(console.nextLine());
             if (escolha < 0 || escolha > arquivos.length) {
                 System.out.println("Escolha uma opcao valida");
@@ -43,28 +42,30 @@ public class Backup {
 
         } while (escolha < 0 || escolha > arquivos.length);
         if (escolha != 0)
+
         recuperarBackup(arquivos[escolha - 1]);
+
         // Fazer backup do arquivo selecionado
 
     }
 
     public static boolean recuperarBackup(File path) {
-        System.out.println("Backup completo do arquivo" + path.getName());
         criarBackup();
         excluirArquivos(new File("dados/"));
         try {
-            escreverBackup("autores.db", path.toString() + "/", "dados/");
-            escreverBackup("autores.hash_c.db", path.toString() + "/", "dados/");
-            escreverBackup("autores.hash_d.db", path.toString() + "/", "dados/");
-            escreverBackup("categorias.db", path.toString() + "/", "dados/");
-            escreverBackup("categorias.hash_c.db", path.toString() + "/", "dados/");
-            escreverBackup("categorias.hash_d.db", path.toString() + "/", "dados/");
-            escreverBackup("livros.db", path.toString() + "/", "dados/");
-            escreverBackup("livros.hash_c.db", path.toString() + "/", "dados/");
-            escreverBackup("livros.hash_d.db", path.toString() + "/", "dados/");
-            escreverBackup("livros_categorias.btree.db", path.toString() + "/", "dados/");
-            escreverBackup("livros_isbn.hash_c.db", path.toString() + "/", "dados/");
-            escreverBackup("livros_isbn.hash_d.db", path.toString() + "/", "dados/");
+            escreverRecuperacao("autores.db", path.toString() + "/", "dados/");
+            escreverRecuperacao("autores.hash_c.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("autores.hash_d.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("categorias.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("categorias.hash_c.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("categorias.hash_d.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("livros.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("livros.hash_c.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("livros.hash_d.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("livros_categorias.btree.db",  path.toString() + "/", "dados/");
+            escreverRecuperacao("livros_isbn.hash_c.db", path.toString()+ "/",  "dados/");
+            escreverRecuperacao("livros_isbn.hash_d.db", path.toString()+ "/",  "dados/");
+        System.out.println("\n \n \nBackup do arquivo feito com sucesso!");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -105,13 +106,24 @@ public class Backup {
         byte[] ba;
         FileInputStream fi = new FileInputStream(origem + arquivo);
         ba = fi.readAllBytes();
-        // System.out.println(new String(ba));
+        //System.out.println(new String(ba));
         fi.close();
-        FileOutputStream fo = new FileOutputStream(destino + "/" + arquivo);
+        FileOutputStream fo = new FileOutputStream(destino +  "/" + arquivo);
         ba = LZW.codifica(ba);
         fo.write(ba);
         fo.close();
         // System.out.println(new String(LZW.decodifica(ba)));
+    }
+    public static void escreverRecuperacao(String arquivo, String origem, String destino) throws Exception {
+        byte[] ba;
+        FileInputStream fi = new FileInputStream(origem + arquivo);
+        ba = fi.readAllBytes();
+        fi.close();
+        FileOutputStream fo = new FileOutputStream(destino + "/" + arquivo);
+        ba = LZW.decodifica(ba);
+        // System.out.println(new String(ba));
+        fo.write(ba);
+        fo.close();
     }
 
     public static void excluirPasta(File pasta) {
