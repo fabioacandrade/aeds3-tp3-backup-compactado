@@ -48,6 +48,12 @@ public class Principal {
           case 9:
             preencherDados();
             break;
+          case 4:
+            Backup.criarBackup();
+            break;
+          case 5:
+            Backup.listarBackups();
+            break;
           case 0:
             break;
           default:
