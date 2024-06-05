@@ -3,7 +3,6 @@
 - Compactação e descompactação de arquivos utilizando o algoritmo LZW
 - Backup de arquivos
 - Metodos criados:
-    - **Backup.java**
     - `void listarBackups()` - Lista todos os backups realizados.
     - `void recuperarBackup(File path)` - A partir de um path, recupera um backup.
     - `boolean criarBackup()` - Cria uma pasta de backup com a data do momento, alem de adicionar cada backup feito à ela.
