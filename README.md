@@ -26,4 +26,4 @@
 - [@LucasAlkmimBarros](https://www.github.com/LucasAlkmimBarros)
 - [@Marcal08](https://www.github.com/Marcal08)
 - [@PRMaia](https://www.github.com/PRMaia)
-~~
+
